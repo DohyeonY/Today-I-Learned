@@ -1,0 +1,41 @@
+<!--2-4. CSS 결합자 실습 예제-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* 자손 결합자 */
+    /* div 아래에 있는 모든 p 들에 대한것 */
+    div p {
+      color: blue;
+    }
+    
+ /* 자식 결합자 */
+ /* div 바로 아래에 있는 직계가족같은 느낌의 p들에 영향 */
+ div > p {
+      color: crimson;
+    }
+
+  </style>
+</head>
+<body>
+  <div>
+    <p>이건 파랑이 아닙니다.</p>
+    <span>이건 파랑입니다.</span>
+
+    <p>  
+      <span>이건 파랑입니다.</span>
+    </p> 
+
+
+
+
+  </div>
+
+</body>
+</html>

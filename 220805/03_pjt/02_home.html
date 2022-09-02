@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="01_nav_footer.css">
+  <link rel="stylesheet" href="02_home.css">
+  <title>Community</title>
+</head>
+<body>
+  <!-- 01_nav_footer에서 완성한 Navigation bar & Modal & Footer 코드를 적절한 위치에 사용합니다. -->
+<!-- 네비바부분 -->
+</a>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+  <div class="container-fluid">
+
+    <a class="navbar-brand" href="02_home.html">
+      <img src="images/logo.png" width="100px" class="img-fluid" alt="">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="02_home.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="03_community.html">Community</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
+        </li>
+
+
+
+        <li class="nav-item dropdown">
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="02_home.html">Home</a></li>
+            <li><a class="dropdown-item" href="03_community.html">Community</a></li>
+            <li class="navlink" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</li>
+            
+            
+
+          </ul>
+        </li>
+      </ul>
+      </form>
+    </div>
+  </div>
+</nav>
+<!-- 모달부분 -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Modal title</h5>
+      
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+
+    <div class="modal-body">
+      <p class="mb-0">
+        Email address
+        <form>
+          <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
+            <div class="">
+              <input type="email" class="form-control" id="inputEmail3">
+            </div>
+            <div class="text-muted fw-light">We'll never share your email with anyone else.</div>
+          </div>
+          Password
+          <div class="row mb-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label"></label>
+            <div class="">
+              <input type="password" class="form-control" id="inputPassword3">
+            </div>
+          </div>
+
+          <div class="row mb-1">
+            <div class="">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                <label class="form-check-label" for="gridCheck1">
+                  Check me out
+                </label>
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+
+      </p>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+  <!-- 02_home.html -->
+  <!-- 콜루셀 부분 -->
+  <header>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/header1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="images/header2.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="images/header3.jpg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+    </div>
+
+  </header>
+
+  <h1 class="fw-bold text-center fs-2 my-5">Boxoffice  </h1>
+
+<!-- 포스터 정보 제목 등 부분 -->
+  <div class="container">
+    <section class="text-center row">
+
+      <article class="col-sm-6 col-12">
+        <div class="card" style="width: 18rem;">
+          <img src="images/movie1.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">쇼생크탈출</p>
+          </div>
+        </div>
+      </article>
+      <article class="col-sm-6 col-12">
+        <div class="card" style="width: 18rem;">
+          <img src="images/movie2.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">죽은 시인의 사회</p>
+          </div>
+        </div>
+      </article>
+      <article class="col-sm-6 col-12">
+        <div class="card" style="width: 18rem;">
+          <img src="images/movie3.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">다크 나이트 라이즈</p>
+          </div>
+        </div>
+      </article>
+      <article class="col-sm-6 col-12">
+        <div class="card" style="width: 18rem;">
+          <img src="images/movie4.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">그랜드 부다페스트 호텔</p>
+          </div>
+        </div>
+      </article>
+      <article class="col-sm-6 col-12">
+        <div class="card" style="width: 18rem;">
+          <img src="images/movie5.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Her</p>
+          </div>
+        </div>
+      </article>
+      <article class="col-sm-6 col-12">
+        <div class="card" style="width: 18rem;">
+          <img src="images/movie6.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">위대한 쇼맨</p>
+          </div>
+        </div>
+      </article>
+
+
+    </section>
+  </div>
+  
+
+  <!-- 푸터부분 -->
+<footer class="fixed-bottom d-flex justify-content-center text-muted">
+  <div>
+    Web-bootstrap PJT, by 여도현
+  </div>
+  
+  
+  </footer>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>  
+</body>
+</html>

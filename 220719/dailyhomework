@@ -1,0 +1,249 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled0.ipynb",
+      "provenance": [],
+      "collapsed_sections": [],
+      "authorship_tag": "ABX9TyNUv2mLDXRMmXwcQPfb9P3Y",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/DohyeonY/mangostrings/blob/main/dailyhomework\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "CPvXKZ4OWoa5",
+        "outputId": "54238468-26e6-439a-b3ba-627d1d7e6b6e"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\"c:\\python_project\\test\"\n"
+          ]
+        }
+      ],
+      "source": [
+        "print('\"c:\\python_project\\\\test\"')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "a = input('게시글의 총 갯수를 입력하세요.')\n",
+        "b = input('한 페이지에 필요한 게시글 수를 입력하세요.')\n",
+        "\n",
+        "print(int(a) / int(b))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "bhRSYwL1Wql4",
+        "outputId": "550fe5b5-7945-429a-e68b-6226f71c47e2"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "게시글의 총 갯수를 입력하세요.30\n",
+            "한 페이지에 필요한 게시글 수를 입력하세요.6\n",
+            "5.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "jumin = input()\n",
+        "a = jumin[:6] + '*******'\n",
+        "print(a)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "NqAPhV2LZd82",
+        "outputId": "4f111cab-e39f-41a2-812b-db7ae110522d"
+      },
+      "execution_count": 24,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "940809-1561131\n",
+            "940809******\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "result = 0\n",
+        "for n in range(1,1000):\n",
+        "  if n % 2 == 0 or n % 7 == 0:\n",
+        "    result += n\n",
+        "print(result)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Qwwg-MjbbV-m",
+        "outputId": "67d3c0e7-1a89-4b78-87c4-d14df38898e8"
+      },
+      "execution_count": 31,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "284787\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print('*' * 4 + '\\n' + '*' * 4 + '\\n' + '*' * 4 + '\\n' + '*' * 4 + '\\n' + '*' * 4)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "syVlQIHtht0R",
+        "outputId": "596db6e7-f210-4b52-a086-bc35f6c234a8"
+      },
+      "execution_count": 39,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "****\n",
+            "****\n",
+            "****\n",
+            "****\n",
+            "****\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "score = {'python' : '80', 'django' : '89', 'web' : '83'}\n",
+        "\n",
+        "score['algorithm'] = 90\n",
+        "\n",
+        "score['python'] = 85\n",
+        "\n",
+        "print((int(score['python']) + int(score['django']) + int(score['web']) + int(score['algorithm'])) / 4)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4ZtyjYcxoTU-",
+        "outputId": "22303bb7-3538-4666-b53f-ac1e531b6811"
+      },
+      "execution_count": 44,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "86.75\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(sum(map(int, input('숫자를 입력해 주세요 : '))))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "qCPyuFq6pdmz",
+        "outputId": "6634acb7-ebcc-465b-d73b-319f9b11ebc6"
+      },
+      "execution_count": 45,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "숫자를 입력해 주세요 : 1243\n",
+            "10\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        ""
+      ],
+      "metadata": {
+        "id": "_jUlha20snVw"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        ""
+      ],
+      "metadata": {
+        "id": "E3CBvsagsncM"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        ""
+      ],
+      "metadata": {
+        "id": "zf7j3VXqriF0"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}

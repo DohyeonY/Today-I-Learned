@@ -1,0 +1,8 @@
+git clone 주소
+git add (파일) or .
+git status
+git commit -m "메세지"
+git push origin master
+git remote -v
+git remote add origin (주소)
+등등

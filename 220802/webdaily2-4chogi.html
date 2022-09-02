@@ -1,0 +1,112 @@
+<!--2-4. CSS display 응용, 체스보드 시뮬-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+      .outer-box {
+      width : 800px;
+      height: 800px;
+      border: 2px solid black ;
+      display : inline-block ;
+      font-size: 0;
+   /*   grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px; */
+    /*  grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px; */
+    }
+
+    .b-box {
+      width : 100px;
+      height: 100px;
+      background-color: black;
+      display : inline-block ;
+      font-size: 0;
+
+    }
+    .w-box {
+      width : 100px;
+      height: 100px;
+      background-color: white;
+      display: inline-block;
+      font-size: 0;
+    }
+  
+   /* div:last-child{
+      border-right: none;
+      border-bottom: none;
+    }*/
+    .queen{
+      background-size: 100px;
+      background-image: url( "white_queen.png" );
+    }
+
+    .king{
+      background-size: 100px;
+      background-image: url( "white_king.png" );
+    }
+
+    .rook{
+      background-size: 100px;
+      background-image: url( "white_rook.png" );
+    }
+
+    .pawn{
+      background-size: 100px;
+      background-image: url( "black_pawn.png" );
+
+    }
+
+
+</style>
+
+</head>
+<body>
+  <div class="outer-box">
+    <div>
+      <div class="w-box" ></div><div class="b-box"></div><div class="w-box" ></div><div class="b-box"></div>
+      <div class="w-box" ></div><div class="b-box"></div><div class="w-box" ></div><div class="b-box"></div>
+    </div>
+
+    <div>
+      <div class="b-box" ></div><div class="w-box"></div><div class="b-box" ></div><div class="w-box"></div>
+      <div class="b-box" ></div><div class="w-box"></div><div class="b-box" ></div><div class="w-box"></div>
+    </div>
+    
+    <div>
+      <div class="w-box" ></div><div class="b-box"></div><div class="w-box" ></div><div class="b-box"></div>
+      <div class="w-box" ></div><div class="b-box"></div><div class="w-box" ></div><div class="b-box"></div>
+    </div>
+
+    <div>
+      <div class="b-box" ></div><div class="w-box"></div><div class="b-box" ></div><div class="w-box"></div>
+      <div class="b-box" ></div><div class="w-box"></div><div class="b-box" ></div><div class="w-box"></div>
+    </div>
+
+    <div>
+      <div class="w-box pawn" ></div><div class="b-box"></div><div class="w-box" ></div><div class="b-box"></div>
+      <div class="w-box" ></div><div class="b-box"></div><div class="w-box" ></div><div class="b-box"></div>
+    </div>
+
+    <div>
+      <div class="b-box" ></div><div class="w-box"></div><div class="b-box" ></div><div class="w-box"></div>
+      <div class="b-box" ></div><div class="w-box"></div><div class="b-box" ></div><div class="w-box"></div>
+    </div>
+
+    
+    <div>
+      <div class="w-box" ></div><div class="b-box"></div><div class="w-box" ></div><div class="b-box"></div>
+      <div class="w-box" ></div><div class="b-box"></div><div class="w-box" ></div><div class="b-box"></div>
+    </div>
+
+    <div>
+      <div class="b-box" ></div><div class="w-box"></div><div class="b-box" ></div><div class="w-box queen"></div>
+      <div class="b-box king" ></div><div class="w-box "></div><div class="b-box" ></div><div class="w-box rook"></div>
+    </div>
+
+    
+  </div>
+</body>
+</html>
