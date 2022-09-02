@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b107f4e5-8580-4404-9cbb-c969385ae099" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/220719/0719/.ipynb_checkpoints/Untitled-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/220719/0719/Untitled.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/220719/hws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/220715/local/TL" beforeDir="false" afterPath="$PROJECT_DIR$/220715/local/TL" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/220715/local/TL/GH" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/220719/0719/0719_homework(2).md" beforeDir="false" afterPath="$PROJECT_DIR$/220719/0719/0719_homework(2).md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/220719/homework/shared" beforeDir="false" afterPath="$PROJECT_DIR$/220719/homework/shared" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/220719/homework/shared/01.python/220719/02_01_python_workshop_복습_자료형.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/220719/homework/shared/01.python/220719/02_02_python_workshop_복습_형변환.ipynb" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2ECUk5pwPZlNANqycjP80dbL3Kq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b107f4e5-8580-4404-9cbb-c969385ae099" name="Changes" comment="" />
+      <created>1662099201099</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662099201099</updated>
+    </task>
+    <servers />
+  </component>
+</project>
