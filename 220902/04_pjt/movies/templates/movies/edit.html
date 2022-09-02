@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>영화 수정 페이지</h1>
+  <hr>
+ <form action="{% url 'movies:update' movie.pk %}" method="POST">
+  {% csrf_token %}
+  <label for="title">Title :</label>
+  <input type="text" name="title" id="title" value="{{ movie.title }}"><br>
+
+  <label for="audience">Audience :</label>
+  <input type="text" name="audience" id="audience" value="{{ movie.audience }}"><br>
+
+  <label for="release_date">Release Dates :</label>
+  <input type="date" name="release_date" id="release_date" value="{{ movie.release_date|date:"Y-m-d"}}"><br>
+
+  <label for="score">Score :</label>
+  <input type="text" name="score" id="score" value="{{ movie.score }}"><br>
+
+  <label for="poster_url">Poster Url :</label>
+  <input type="text" name="poster_url" id="poster_url" value="{{ movie.poster_url }}"><br>
+  
+  <label>Genre :
+    <select name="genre" id="genre" >
+      <option value="">Choice</option>
+      <option value="Fantasy" {% if movie.genre == "Fantasy" %}selected{% endif %}>Fantasy</option>
+      <option value="Comedy" {% if movie.genre == "Comedy" %}selected{% endif %}>Comedy</option>
+      <option value="Action" {% if movie.genre == "Action" %}selected{% endif %}>Action</option>
+    </select>
+  </label><br>
+
+
+  <label for="description">Description :</label><br>
+  <textarea cols='30' rows='10' name="description" id="description" >{{ movie.description }}</textarea><br>
+  <input type="reset">
+  <input type="submit">
+</form>
+
+
+  <hr>
+  <a href="{% url 'movies:index' %}">BACK</a>
+
+{% endblock content %}
