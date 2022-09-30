@@ -1,6 +1,22 @@
-def neo(k, midS) :
-    if k == 12 :
-        return
+def ne(month, cost) :
+    global mincost
 
-    ne(k+1, mid+min(월비용, 일비용))
-    ne(k+3, midS+삼개월비용)
+    if month >= 12 :
+        if mincost > cost :
+            mincost = cost
+        return
+    ne(month + 1, cost + day * table[month])
+    ne(month + 1, cost + onem)
+    ne(month + 3, cost + threem)
+
+T = int(input())
+
+for tc in range(1, T+1) :
+    day, onem, threem, year = map(int, input().split())
+    table = list(map(int, input().split()))
+
+    mincost = year
+
+    ne(0, 0)
+
+    print(f'#{tc} {mincost}')
