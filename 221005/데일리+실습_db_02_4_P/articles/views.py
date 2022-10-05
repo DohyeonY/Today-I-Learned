@@ -38,9 +38,12 @@ def create(request):
 def detail(request, pk):
     article = get_object_or_404(Article, pk=pk)
     comment_form = CommentForm()
+    # 추가
+    comments = article.comment_set.all()
     context = {
         'article': article,
         'comment_form': comment_form,
+        'comments' : comments,
     }
     return render(request, 'articles/detail.html', context)
 
@@ -79,18 +82,22 @@ def update(request, pk):
     }
     return render(request, 'articles/update.html', context)
 
-
 @ require_POST
 def comment_create(request, pk):
     article = get_object_or_404(Article, pk=pk)
     comment_form = CommentForm(request.POST)
     if comment_form.is_valid():
         comment = comment_form.save(commit=False)
-        comment.author == request.user
+        comment.author = request.user
         comment.article = article
         comment.save()
         return redirect('articles:detail', article.pk)
-    return redirect('accounts:login')
+    
+    context = {
+        'comment_form': comment_form,
+    }
+    return render(request, 'articles/detail.html', context)
+
 
 
 @require_POST

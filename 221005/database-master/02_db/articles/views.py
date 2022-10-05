@@ -1,20 +1,18 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_http_methods, require_POST, require_safe
 from django.contrib.auth.decorators import login_required
-# from django.http import HttpResponse, HttpResponseForbidden
+
 from .models import Article, Comment
 from .forms import ArticleForm, CommentForm
-
 
 # Create your views here.
 @require_safe
 def index(request):
-    articles = Article.objects.all()
+    articles = Article.objects.order_by('-pk')
     context = {
         'articles': articles,
     }
     return render(request, 'articles/index.html', context)
-
 
 @login_required
 @require_http_methods(['GET', 'POST'])
@@ -22,9 +20,11 @@ def create(request):
     if request.method == 'POST':
         form = ArticleForm(request.POST)
         if form.is_valid():
+            # 추가
             article = form.save(commit=False)
             article.user = request.user
             article.save()
+            # article = form.save()
             return redirect('articles:detail', article.pk)
     else:
         form = ArticleForm()
@@ -36,54 +36,43 @@ def create(request):
 
 @require_safe
 def detail(request, pk):
-    article = Article.objects.get(pk=pk)
-    # comment_form = CommentForm()
-    # comments = article.comment_set.all()
+    article = get_object_or_404(Article, pk=pk)
+    comment_form = CommentForm()
+    comments = article.comment_set.all()
     context = {
         'article': article,
-        # 'comment_form': comment_form,
-        # 'comments': comments,
+        'comment_form': comment_form,
+        'comments': comments,
     }
     return render(request, 'articles/detail.html', context)
 
 
 @require_POST
 def delete(request, pk):
-    article = Article.objects.get(pk=pk)
+    article = get_object_or_404(Article, pk=pk)
+    # 추가
     if request.user.is_authenticated:
         if request.user == article.user:
             article.delete()
             return redirect('articles:index')
-    return redirect('articles:detail', article.pk)
-
-# @require_POST
-# def delete(request, pk):
-#     article = Article.objects.get(pk=pk)
-#     if request.user.is_authenticated:
-#         if request.user == article.user:
-#             article.delete()
-#             return redirect('articles:index')
-#         return HttpResponseForbidden()
-#     return HttpResponse(status=401)
+    return redirect('articles:index')
 
 
-@login_required
 @require_http_methods(['GET', 'POST'])
 def update(request, pk):
-    article = Article.objects.get(pk=pk)
-    if request.user == article.user:
+    article = get_object_or_404(Article, pk=pk)
+    # 추가
+    if request.user.is_authenticated:
         if request.method == 'POST':
             form = ArticleForm(request.POST, instance=article)
             if form.is_valid():
                 form.save()
                 return redirect('articles:detail', article.pk)
-        else:
-            form = ArticleForm(instance=article)
     else:
-        return redirect('articles:index')
+        form = ArticleForm(instance=article)
     context = {
-        'form': form,
         'article': article,
+        'form': form,
     }
     return render(request, 'articles/update.html', context)
 
@@ -95,8 +84,8 @@ def comments_create(request, pk):
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
-            comment.article = article
             comment.author = request.user
+            comment.article = article
             comment.save()
         return redirect('articles:detail', article.pk)
     return redirect('accounts:login')
