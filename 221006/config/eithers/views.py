@@ -48,8 +48,8 @@ def detail(request, pk):
         redper = 0.0
         bluper = 0.0
     else :
-        redper = round(red_num / (red_num + blue_num), 1)
-        bluper = round(blue_num / (red_num + blue_num), 1)
+        redper = round(100 * (red_num / (red_num + blue_num)), 1)
+        bluper = round(100 * (blue_num / (red_num + blue_num)), 1)
     context = {
         'either': either,
         'comment_form': comment_form,
