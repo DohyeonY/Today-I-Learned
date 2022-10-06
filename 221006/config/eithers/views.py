@@ -41,13 +41,23 @@ def detail(request, pk):
     red_num = comm.filter(pick=1).count()
     blue_num = comm.filter(pick=0).count()
 
-    print(red_num)
-    print(blue_num)
-
+    # print(red_num)
+    # print(blue_num)
+    
+    if red_num + blue_num == 0 :
+        redper = 0.0
+        bluper = 0.0
+    else :
+        redper = round(red_num / (red_num + blue_num), 1)
+        bluper = round(blue_num / (red_num + blue_num), 1)
     context = {
         'either': either,
         'comment_form': comment_form,
         'comments': comments,
+        'red_num' : red_num,
+        'blue_num' : blue_num,
+        'redper' : redper,
+        'bluper' : bluper,
     }
     return render(request, 'eithers/detail.html', context)
 
