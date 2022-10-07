@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+  <h1>DETAIL</h1>
+  <hr>
+
+  <div class="card" style="width: 18rem;">
+
+    <img src="{{ movie.poster_url }}" class="card-img-top" alt="Poster">
+    <div class="card-body">
+      <p class="card-text">
+        
+        <p>{{ movie.title }}</p>
+        <p>Audience : {{ movie.audience }}</p>
+        <p>Release Dates : {{ movie.relese_date }}</p>
+        <p>Genre : {{ movie.genre }}</p>
+        <p>Score : {{ movie.score }}</p>
+        <p>{{ movie.description }}</p>
+
+        <a class="btn btn-danger" href="{% url 'movies:delete' movie.pk %}" role="button">DELETE</a>
+        <a class="btn btn-info" href="{% url 'movies:update' movie.pk %}" role="button">UPDATE</a>
+        <a class="btn btn-warning" href="{% url 'movies:index' %}" role="button">BACK</a>
+      </center>
+      </p>
+    </div>
+  </div>
+
+{% endblock content %}
