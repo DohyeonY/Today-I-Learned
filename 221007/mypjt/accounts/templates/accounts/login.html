@@ -1,0 +1,11 @@
+
+{% block content %}
+<a href="{% url 'accounts:signup' %}">Signup</a>
+  <h2>Login</h2>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>login</button>
+  </form>
+  <a class="btn btn-warning" href="{% url 'movies:index' %}" role="button">BACK</a>
+{% endblock %}
