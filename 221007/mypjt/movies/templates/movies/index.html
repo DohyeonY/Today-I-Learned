@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <h1>INDEX</h1>
+  {% if request.user.is_authenticated %}
+  <a href="{% url 'movies:create' %}">CREATE</a>
+  {% endif %}
+  <hr>
+  {% for movie in movies %}
+    <p><a href="{% url 'movies:detail' movie.pk %}">{{ movie.title }}</a></p>
+    <p><b>{{ movie.score }}<b></p>
+    <hr>
+  {% endfor %}
+
+{% endblock content %}

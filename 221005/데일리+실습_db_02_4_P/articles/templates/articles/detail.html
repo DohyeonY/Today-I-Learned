@@ -28,7 +28,7 @@
   <ul>
     {% for comment in comments %}
       <li>{{ comment.author }} - {{ comment.content }}</li>
-      {% if user == comment.author %}
+      {% if request.user == comment.author %}
         <form action="{% url 'articles:delete_comment' article.pk comment.pk%}" method="POST">
           {% csrf_token %}
           <button>댓글삭제</button>
