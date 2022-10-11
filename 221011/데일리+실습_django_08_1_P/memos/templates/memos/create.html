@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>CREATE</h1>
+  <form action="{% url 'memos:create' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+  </form>
+  <hr>
+  <a href="{% url 'memos:index' %}">[back]</a>
+{% endblock  %}
+
+
