@@ -1,0 +1,7 @@
+asgiref==3.4.1
+Django==3.2.9
+django-appconf==1.0.5
+pilkit==2.0
+pytz==2021.3
+six==1.16.0
+sqlparse==0.4.2

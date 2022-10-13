@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>UPDATE</h1>
+  <form action="{% url 'memos:update' memo.pk %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+  </form>
+  <hr>
+  <a href="{% url 'memos:detail' memo.pk %}">[back]</a>
+{% endblock  %}
+
+

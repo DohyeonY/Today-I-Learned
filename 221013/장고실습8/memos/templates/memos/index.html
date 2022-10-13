@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <hr>
+  <h1>travels</h1>
+ 
+  <a href="{% url 'memos:create' %}">CREATE</a>
+    <hr>
+  <div>
+
+    {% for memo in memos %}
+    {% if memo.image %}
+    <img src="{{ memo.image_thumbnail.url }}" alt="{{ memo.image_thumbnail }}">
+     {% endif %}
+    <p>장소 : {{ memo.location }}</p>
+    <p>시작일 : {{ memo.start_date }}</p>
+
+    <a href="{% url 'memos:detail' memo.pk %}">detail</a>
+        <hr>
+    {% endfor %}
+  </div>
+  
+{% endblock  %}

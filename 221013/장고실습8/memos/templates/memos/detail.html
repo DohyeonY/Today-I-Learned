@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ memo.pk }}번째 여행</h1>
+  <hr>
+  {% if memo.image %}
+  <img src="{{ memo.image.url }}" alt="memo img">
+  {% endif %}
+  <p>장소 : {{ memo.location  }}</p>
+  <p>계획 : {{ memo.plan  }} </p>
+  <p>시작일 : {{ memo.start_date  }} </p>
+  <p>종료일: {{ memo.end_date  }} </p>
+
+  <hr>
+  <form action=" {% url 'memos:delete' memo.pk %}" method="POST">
+    {% csrf_token %}
+    <button>삭제</button>  
+  </form>
+  <a href="{% url 'memos:update' memo.pk%}">[UPDATE]</a>
+  <hr>
+  <a href="{% url 'memos:index' %}">[back]</a>
+{% endblock  %}
