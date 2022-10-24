@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .titlecolor {
+      color : blue
+    }
+  </style>
+</head>
+<body>
+  <!-- <h1>오늘의 TODO</h1> -->
+  <script>
+
+    const newH1 = document.createElement('h1')
+    newH1.innerText = '오늘의 TODO'
+    // newH1.style.color = 'red'
+    newH1.setAttribute('class', 'titlecolor')
+
+    const bodyTag = document.querySelector('body')
+    bodyTag.appendChild(newH1)
+
+    const newUl = document.createElement('ul')
+    bodyTag.appendChild(newUl)
+    
+    const lst = ['양치하기', '공부하기', '휴식하기']
+    for (let i=0; i < 3; i++) {
+      const newLi = document.createElement('li')
+      newUl.appendChild(newLi)
+      newLi.innerText = lst[i]
+    }
+
+    // const newLi1 = document.createElement('li')
+    // const newLi2 = document.createElement('li')
+    // const newLi3 = document.createElement('li')
+    // newUl.append(newLi1, newLi2, newLi3)
+    const myButton = document.createElement('button')
+    myButton.innerText = 'button'
+    bodyTag.appendChild(myButton)
+    myButton.addEventListener('click', (event)=>{
+      event.target.innerText = event.target.innerText + "1"
+      // alert="버튼 동작"
+    })
+
+
+    // liTag.forEach((i)=>());
+    // liTag.forEach(function (i))
+    
+
+  </script>
+</body>
+</html>

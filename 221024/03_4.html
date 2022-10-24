@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    section {
+      height: 50vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .myInputs {
+      display: block;
+      outline: none;
+      width: 200px;
+      margin: 15px;
+      padding: 15px 10px;
+      text-align: center;
+      border: 2px solid black;
+      border-radius: 5px;
+    }
+ 
+    .myInputs:focus {
+      /* focus 발생시 변경될 속성 */
+      border-color: green;
+    }
+
+    .myButton{
+      display: block;
+      background: none;
+      outline: none;
+      margin: 15px auto;
+      padding: 10px 10px;
+      text-align: center;
+      border: 2px solid #55b2cf;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+
+    .myButton:hover {
+      color: white;
+      background-color: #55b2cf;
+    }
+
+  </style>
+</head>
+<body>
+  <section>
+    <div>
+      <input class="myInputs" type="text" placeholder="내용을 입력하세요">
+      <button class="myButton">확인하기</button>
+    </div>
+  </section>
+  
+  <script>
+		// 이곳에 코드를 작성합니다.
+    const btn = document.querySelector('button')
+    btn.addEventListener('click', function (event) {
+      const inputTag = document.querySelector('input')
+      const data = inputTag.value
+
+      if (data == '학생들 모두 화이팅') {
+        alert('여러분을 응원합니다:)')
+
+      event.target.reset()
+      } else {
+        alert('다시 시도해 주세요 :)')
+      }
+    })
+
+  </script>
+</body>
+</html>
