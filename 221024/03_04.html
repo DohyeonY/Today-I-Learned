@@ -11,13 +11,12 @@
   <script>
     // 이곳에 코드를 작성합니다.
     const bodyTag = document.querySelector('body')
-    const aTag = document.createElement('a')
-    bodyTag.appendChild(aTag)
-    // divTag.appendChild(title)
-    aTag.innerText = 'SSAFY'
-    aTag.setAttribute('href', 'https://ssafy.com')
-    aTag.addEventListener('click', function (event) {
-      event.preventDefault()
+
+    const btn = document.createElement('button')
+    btn.innerText = 'button'
+    bodyTag.appendChild(btn)
+    btn.addEventListener('click', function (event) {
+      console.log('버튼을 클릭했습니다.')
     })
 
 
