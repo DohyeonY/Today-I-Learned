@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+  
+  <div class="container">
+
+    <form id="form" class="my-3">
+      <div class="mb-3">
+        <input type="text" class="form-control" id="title">
+      </div>
+      <div class="mb-3">
+        <textarea class="form-control" id="content" rows="3"></textarea>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary">add</button>
+      </div>
+    </form>
+    
+    <section id="cardsSection" class="row">
+      
+      <!-- 카드 예시 -->
+      <!-- <article class="col-4">
+        <div class="card m-1">
+          <div class="card-body">
+            <h5 class="card-title">Example</h5>
+            <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti placeat odit rerum asperiores beatae vitae doloremque consectetur magni delectus, fuga autem laudantium, quidem iusto voluptates non earum dolorem totam dolores.</p>
+          </div>  
+        </div>
+      </article> -->
+      <!-- 카드 예시 -->
+      
+    </section>
+
+  </div>
+
+  <script>
+    /* 
+      사용자가 form 에 title과 content를 입력하고 submit하면, 예시와 같은 카드를 생성하여 div#cardSection에 추가하는 코드를 작성하시오.
+      카드가 생성되면 기존 input과 textarea의 내용은 삭제되어야 합니다.
+      (완성 이후 카드 예시는 삭제)
+    */
+   const titleInput = document.querySelector('#title')
+   const contentInput = document.querySelector('#content')   
+   const btn = document.querySelector('button')
+   const sectionTag = document.querySelector('#cardsSection')
+
+
+
+
+    const makeCard = function(event) {
+      console.log('122')
+      event.preventDefault()
+
+      const articleTag = document.createElement('article')
+      articleTag.setAttribute('class', 'col-4')
+      sectionTag.appendChild(articleTag)
+
+      const divTag = document.createElement('div')
+      divTag.setAttribute('class', 'card m-1')
+      articleTag.appendChild(divTag)
+
+      const divTag2 = document.createElement('div')
+      divTag2.setAttribute('class', 'card-body')
+      divTag.appendChild(divTag2)
+
+      const h5Tag = document.createElement('h5')
+      h5Tag.setAttribute('class', 'card-title')
+      h5Tag.innerText = titleInput.value
+      divTag2.appendChild(h5Tag)
+
+      const pTag = document.createElement('p')
+      pTag.setAttribute('class', 'card-text')
+      pTag.innerText = contentInput.value
+      divTag2.appendChild(pTag)
+
+      titleInput.value = ''
+      contentInput.value = ''
+      
+      
+    }
+
+
+   btn.addEventListener('click', makeCard)
+
+
+
+
+
+  </script>
+</body>
+</html>
