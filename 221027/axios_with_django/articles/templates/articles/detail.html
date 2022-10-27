@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>DETAIL</h1>
+  <h2>{{ article.pk }}번째 글입니다.</h2>
+  <hr>
+  <p><b>작성자 : {{ article.user }}</b></p>
+  <p>제목 : {{ article.title }}</p>
+  <p>내용 : {{ article.content }}</p>
+  <p>작성 시각 : {{ article.created_at }}</p>
+  <p>수정 시각 : {{ article.updated_at }}</p>
+  {% if request.user == article.user %}
+    <a href="{% url 'articles:update' article.pk %}">UPDATE</a>
+    <form action="{% url 'articles:delete' article.pk %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="DELETE">
+    </form>
+  {% endif %}
+  <hr>
+  <a href="{% url 'articles:index' %}">뒤로가기</a>
+  <hr>
+
+
+  <h4>댓글 목록</h4>
+  {% if comments %}
+    <p>{{ comments|length }}개의 댓글이 있습니다.</p>
+  {% endif %}
+  <ul id='replyUl'>
+    {% for comment in comments %}
+      <li id='replyLi'>
+        {{ comment.user }} - {{ comment.content }}
+        {% if request.user == comment.user %}
+          <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="DELETE">
+          </form>
+        {% endif %}
+      </li>
+    {% empty %}
+      <li>댓글이 없어요...</li>
+    {% endfor %}
+  </ul>
+  <hr>
+  {% if request.user.is_authenticated %}
+    <form id='comment-form' data-article-id="{{ article.pk }}" action="{% url 'articles:comments_create' article.pk %}" method="POST">
+      {% csrf_token %}
+      {{ comment_form }}
+      <input id="inputBtn" type="submit">
+    </form>
+  {% else %}
+    <a href="{% url 'accounts:login' %}">댓글을 작성하려면 로그인 하세요.</a>
+  {% endif %}
+{% endblock content %}
+
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  const form = document.querySelector('#comment-form')
+  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  const input = document.querySelector('[name=content]')
+  console.log(input)
+  console.log(form)
+  form.addEventListener('submit', function (event) {
+    event.preventDefault()
+    const articleId = event.target.dataset.articleId
+    const newForm = new FormData()
+    
+    newForm.append('content', input.value)
+    // newForm.append('user', form.)
+
+    axios({
+      method: 'post',
+      headers: {'X-CSRFToken': csrftoken},
+      url: `/articles/${articleId}/comments/`,
+      data: newForm
+
+      })
+      .then( function (response) {
+        console.log(response.data.comment_content)
+        const ulTag = document.querySelector('#replyUl')
+        const liTag = document.createElement('li')
+        ulTag.appendChild(liTag)
+        liTag.innerHTML=`{{ request.user.username }} - ${ response.data.comment_content }
+                  <form action="comments/${ response.data.comment_pk }/delete/" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="DELETE">
+          </form>`
+      
+      })
+      .catch (function (error) {
+        console.log(error)
+      })
+    })
+
+</script>
+
+{% endblock script %}
