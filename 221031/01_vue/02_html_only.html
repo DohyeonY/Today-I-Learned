@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p id="name">name : </p>
+    <input id="inputName" type="text">
+  </div>
+
+  <div id="app1">
+    <p id="name1">name : </p>
+    <input id="inputName1" type="text">
+  </div>
+
+  <p id="pTag">
+
+  </p>
+
+  <script>
+    const pTag = document.querySelector("#pTag")
+    const name = document.querySelector('#name')
+    const input = document.querySelector('#inputName')
+    input.addEventListener('input', function (e) {
+      name.innerText = 'name : ' + e.target.value
+
+    })
+    const name1 = document.querySelector('#name1')
+    const input1 = document.querySelector('#inputName1')
+    input1.addEventListener('input', function (e1) {
+      name1.innerText = 'name : ' + e1.target.value
+
+    })
+      pTag.innerText += e.target.value
+      pTag.innerText += e1.target.value
+  </script>
+    
+</body>
+</html>
