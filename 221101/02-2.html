@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: rgb(38, 38, 38);
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 500px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #50B8E7;
+    }
+
+    .buttonArea {
+      margin: 0 auto;
+      width: 80%;
+    }
+
+    .buttonRow {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      height: 80px;
+    }
+
+    .btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 45%;
+      border: 1px solid #50B8E7;
+      cursor: pointer;
+    }
+
+    .clear {
+      margin-top: 10px;
+      outline: none;
+      background: none;
+      border: 1px solid #50B8E7;
+      width: 100px;
+      height: 50px;
+      cursor: pointer;
+      font-size: large;
+    }
+
+    .clear:hover {
+      background-color: #B9E2F5;
+    }
+
+    .type {
+      font-size: x-large;
+      font-weight: bold;
+    }
+
+    .selected {
+      background-color: #B9E2F5;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <h1>버튼 클릭하기</h1>
+      <section class="buttonArea">
+        <div class="buttonRow">
+
+          <div id="btn1" class="btn" v-on:click="clickBtn1">
+            <span class="type">1</span>
+          </div>
+
+          <div id="btn2" class="btn" v-on:click="clickBtn2">
+            <span class="type">2</span>
+          </div>
+
+        </div>
+
+        <div class="buttonRow">
+
+          <div id="btn3" class="btn" v-on:click="clickBtn3">
+            <span class="type">3</span>
+          </div>
+
+          <div id="btn4" class="btn" v-on:click="clickBtn4">
+            <span class="type">4</span>
+          </div>
+
+        </div>
+      </section>
+
+      <button v-on:click="clearAll" id="clearBtn" class="clear">전체 해제</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        isClicked1 : false,
+        isClicked2 : false,
+        isClicked3 : false,
+        isClicked4 : false,
+      },
+      methods: {
+        clickBtn1 : function() {
+            const btn1 = document.querySelector("#btn1")
+            this.isClicked1 = !this.isClicked1
+            if (!this.isClicked1) {
+                btn1.classList.add('selected')
+            } else {
+                btn1.classList.remove('selected')
+            }
+        },
+
+        clickBtn2 : function() {
+            const btn2 = document.querySelector("#btn2")
+            this.isClicked2 = !this.isClicked2
+            if (!this.isClicked2) {
+                btn2.classList.add('selected')
+            } else {
+                btn2.classList.remove('selected')
+            }
+        },
+
+        clickBtn3 : function() {
+            const btn3 = document.querySelector("#btn3")
+            this.isClicked3 = !this.isClicked3
+            if (!this.isClicked3) {
+                btn3.classList.add('selected')
+            } else {
+                btn3.classList.remove('selected')
+            }
+        }, 
+        
+        clickBtn4 : function() {
+            const btn4 = document.querySelector("#btn4")
+            this.isClicked4 = !this.isClicked4
+            if (!this.isClicked4) {
+                btn4.classList.add('selected')
+            } else {
+                btn4.classList.remove('selected')
+            }
+        },
+
+        clearAll : function() {
+            const allBtn = document.querySelectorAll('.btn')
+            console.log(allBtn)
+            allBtn.forEach((el) => {
+                el.classList.remove('selected')
+            })
+            // allBtn.classList.remove('selected')
+        }
+      }
+    })
+  </script>
+</body>
+</html>

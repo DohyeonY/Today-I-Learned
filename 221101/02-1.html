@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      border: 1px solid black;
+      width: 100px;
+      height: 100px;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>박스 색상 바꾸기</h1>
+    <h3 v-model="color">색상 : {{ color }}</h3>
+    <div v-on:click="changeC" class="box" >
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        colors : ['red', 'orange', 'yellow', 'green', 'blue', 'violet'],
+        color : ''
+      },
+      methods : {
+        changeC : function() {
+            const boxTag = document.querySelector(".box")
+            boxTag.style.background=this.colors[_.random(5)]
+            this.color = boxTag.style.background
+            console.log(boxTag.style.background)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Todo List</h1>
+
+        <select>
+            <option value="all">전체</option>
+            <option value="in">진행중</option>
+            <option value="finish">완료</option>
+        </select>
+
+        <input type="text" v-model="content">
+        <button v-on:click="addTodo">+</button>
+        <ul>
+            <!-- {{ todos }} -->
+            <li id="liTag" v-for="item in todos">
+            <input type="checkbox" name="checkbox" id="checkbox" v-on:click="textLine">
+                {{ item.content }}
+            </li>
+        </ul>
+
+
+        <button v-on:click="deleteAll">완료목록 삭제</button>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                todos: JSON.parse(localStorage.getItem('todos')),
+                content : '',
+                isCompleted : false,
+            },
+            methods : {
+                addTodo : function() {
+                    const newTodo = {content: '', isCompleted : false}
+                    if (this.todos == null) {
+                        this.todos = []
+                    }
+                    if (!this.content) {
+                        return window.alert('내용없음')
+                    }
+                    this.todos.push(newTodo)
+                    newTodo.content = this.content
+                    this.content = ''
+                },
+                
+                textLine : function(event) {
+                    const liTag = document.querySelector("#liTag")
+                    this.isCompleted = !this.isCompleted
+                    console.log(event.target.parentNode)
+
+                    if (!event.target.parentNode.style.textDecoration) {
+                        event.target.parentNode.style.textDecoration = 'line-through'
+                    } else {
+                        event.target.parentNode.style.textDecoration = ''
+                    }
+                },
+
+                deleteAll : function() {
+                    const deleteLi = document.querySelectorAll('li')
+                    deleteLi.forEach((el) => {
+                        if (el.style.textDecoration == 'line-through') {
+                            el.remove()
+                        } 
+                    })
+                    
+                },
+
+            },
+            watch : {
+                todos :{
+                    deep : true,
+                    handler: function () {
+                        console.log(this.todos)
+                        localStorage.setItem('todos', JSON.stringify(this.todos))
+                    }
+                }
+            },
+        })
+    </script>
+
+</body>
+</html>

@@ -9,8 +9,8 @@
 <body>
   <div id="app">
     <h1>Popular Movies</h1>
-    <div>
-      <li></li>
+    <div v-for="item in movieinfo.results" key="forArr">
+      <li v-if="item.vote_average >= 8.0">{{ item.title }}</li>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -420,16 +420,15 @@
   }
       },
       filters: {
-        upEight: function (movies) {
-          const movie = movies.filter((movies) => {
-            if (movies.movie_info.result.vote_average >= 8.0) {
-                return movies.movie_info.result.title
-          }
-
-          }),
-        
-      }
+        highnum: function (nums) {
+          const high = nums.filter((num) => {
+            return num % 2
+          })
+          return oddNums
+        }},
     })
+
+
   </script>
 </body>
 </html>

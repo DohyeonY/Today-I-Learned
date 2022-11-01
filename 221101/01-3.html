@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button {
+      background: none;
+      border: 1px solid black;
+      width: 100px;
+      height: 50px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+      margin-left: 10px;
+    }
+
+    .selected {
+      border: 1px solid rgb(80, 184, 231);
+      background-color: rgb(185, 226, 245);
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>버튼을 골라주세요</h1>
+    <button v-on:click="clickBtn1" id="btn1">선택 1</button>
+    <button v-on:click="clickBtn2" id="btn2">선택 2</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        isClicked1 : false,
+        isClicked2 : false
+      },
+      methods: {
+        clickBtn1 : function() {
+            const btn1 = document.querySelector("#btn1")
+            this.isClicked1 = !this.isClicked1
+            if (!this.isClicked1) {
+                btn1.classList.add('selected')
+            } else {
+                btn1.classList.remove('selected')
+            }
+            
+        },
+
+        clickBtn2 : function() {
+            const btn2 = document.querySelector("#btn2")
+            this.isClicked2 = !this.isClicked2
+            if (!this.isClicked2) {
+                btn2.classList.add('selected')
+            } else {
+                btn2.classList.remove('selected')
+            }
+            
+        },
+      }
+    })
+  </script>
+</body>
+</html>
