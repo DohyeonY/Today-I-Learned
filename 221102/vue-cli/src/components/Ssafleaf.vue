@@ -1,5 +1,5 @@
 <template>
-  
+          <img alt="Vue logo" src="../assets/ssafleaf.png">
 </template>
 
 <script>

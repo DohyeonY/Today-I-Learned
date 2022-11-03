@@ -1,5 +1,7 @@
 <template>
-  
+  <div>
+        <img alt="Vue logo" src="../assets/ssanocolor.png">
+  </div>
 </template>
 
 <script>

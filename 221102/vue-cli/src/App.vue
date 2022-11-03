@@ -2,43 +2,89 @@
   <div id="app">
     <h1>캐릭터 진화 단계 가이드</h1>
     <div>
-      <button>Home</button>
-      <button>Start</button>
-
+      <button @click="clickHome">Home</button>
+      <button @click="clickStart">Start</button>
 
     </div>
 
+    <div v-if="!isStarted && pageData==1"><Home/></div>
 
-    <!-- 3. 보여주기 -->
+    <container v-else-if="isStarted && pageData==1">
+      <button @click="clickLeft">왼쪽</button>
+      <Nocolor/>
+      <button @click="clickRight">오른쪽</button>
+      </container>
 
-    <!-- <MyComponent/> -->
-    <!-- <h3><HelloWorld msg="Welcome to Your Vue.js App"/></h3> -->
+    <container v-else-if="pageData==2">
+      <button @click="clickLeft">왼쪽</button>
+      <Ssafling/>
+      <button @click="clickRight">오른쪽</button>
+      </container>
 
-    <!-- <h3>SSAFY 여러분을 응원합니다!</h3> -->
+    <container v-else-if="pageData==3">
+      <button @click="clickLeft">왼쪽</button>
+      <Ssafleaf/>
+      <button @click="clickRight">오른쪽</button>
+      </container>
+
+    <container v-else-if="pageData==4">
+      <button @click="clickLeft">왼쪽</button>
+      <Ssaflower/>
+      <button @click="clickRight">오른쪽</button>
+      </container>
+
   </div>
 </template>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-// 1. 불러오기
-// import MyComponent from './components/MyComponet.vue'
-import MyComponent from '@/components/MyComponent'
-// import MyComponet from './components/MyComponet.vue'
+import Home from '@/components/Home'
+import Nocolor from '@/components/Nocolor'
+import Ssafleaf from '@/components/Ssafleaf'
+import Ssafling from '@/components/Ssafling'
+import Ssaflower from '@/components/Ssaflower'
 export default {
   name: 'App',
   components: {
-    // HelloWorld,
-    // 2. 등록하기
-    MyComponent,
+    Home,
+    Ssaflower,
+    Ssafling,
+    Ssafleaf,
+    Nocolor,
+  },
+  data: function () {
+      return {
+        pageData : 1,
+        isStarted : false,
+
+      }
+  },
+  methods: {
+    clickHome : function() {
+      this.isStarted = false
+      this.pageData = 1
+    },
+    clickStart : function() {
+      this.isStarted = true
+
+    },
+    clickLeft : function() {
+      if (this.pageData == 1) {
+        this.isStarted = false
+      } else {
+        this.pageData -= 1
+      }
+    },
+    clickRight : function() {
+      if (this.pageData == 4) {
+        window.alert('Home으로 돌아갑니다!')
+        this.pageData = 1
+        this.isStarted = false
+      } else {
+        this.pageData += 1
+      }
+    }
   }
 }
-const app = new Vue({
-  el: '#app',
-  data: {
-    pageNum : 1,
-    isStarted : false,
-  },
-})
 </script>
 
 <style>

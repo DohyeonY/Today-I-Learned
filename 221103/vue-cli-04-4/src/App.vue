@@ -1,22 +1,30 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <h1>소득세 계산기</h1>
-    <Income/>
-    <Finaltax/>
-
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-
-import Income from '@/components/Income'
-
+import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios'
 export default {
   name: 'App',
   components: {
-    Income,
-    // Finaltax,
+    HelloWorld
+  },
+
+  data: function () {
+    return {
+      selectiedVideo : null
+    }
+  },
+  
+  created: function () {
+    axios: {
+      method: 'get'
+      url: '',
+    }
   }
 }
 </script>
