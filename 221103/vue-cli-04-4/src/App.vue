@@ -1,31 +1,63 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>SSAFY TUBE</h1>
+    <div v-if="isSelected">
+      <iframe id="player" type="text/html" width="640" height="360"
+      :src="videoSrc" frameborder="0"></iframe>
+    </div>
   </div>
 </template>
 
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// youtube api key : AIzaSyDcv9All6-D9z0pv57gjvQPAVHgODaVSRw
 import axios from 'axios'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+
   },
 
   data: function () {
     return {
-      selectiedVideo : null
+      selectedVideo : null
     }
   },
-  
-  created: function () {
-    axios: {
-      method: 'get'
-      url: '',
+  methods: {
+    isSelected: function() {
+      return Object.keys(this.selectedVideo).length
     }
+  },
+  computed: {
+    videoSrc: function() {
+      if (this.isSelected()) {
+        return "http://www.youtube.com/embed/" + this.selectedVideo.id.videoId
+      }
+      return ""
+    }
+  },
+  created : function () {
+    axios({
+      method : 'get',
+      url: 'https://www.googleapis.com/youtube/v3/search',
+      params: {
+        key: process.env.VUE_APP_YOUTUBE_API_KEY,
+        q: "코딩노래",
+        part: "snippet",
+        type: "video"
+      }
+    })
+    .then ((res) => {
+      this.selectedVideo = res.data.items[0]
+      console.log(this.selectedVideo.id.videoId)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+
   }
+
 }
 </script>
 

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+  <h1 class="text-center">Home</h1>
+
+  <hr>
+    <div class="container">
+    {% for movie in movies %}
+    <div class="card mb-3" style="max-width: 900px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{ movie.poster_path }}" class="img-fluid rounded-start" style="height:100% width:100%" alt="poster">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ movie.title }}</h5>
+            <p class="card-text">{{ movie.overview }}</p>
+            <p class="card-text"><small class="text-muted">평점 : {{ movie.vote_average }}</small></p>
+            <a href="{% url 'movies:detail' movie.pk %}" class="btn btn-primary">DETAIL</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  
+{% endblock content %}

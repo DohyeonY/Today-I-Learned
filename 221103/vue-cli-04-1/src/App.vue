@@ -52,15 +52,15 @@ export default {
   },
   methods : {
     parentGetEvent : function(inputData) {
-      // console.log(`${inputData}`)
+      console.log(`${inputData}`)
       this.getTime.splice(this.getTime)
       this.getTeacher.splice(this.getTeacher)
       console.log(`${inputData.time}`)
       console.log(`${inputData.teacher}`)
       this.getTime.push(`${inputData.time}`)
       this.getTeacher.push(`${inputData.teacher}`)
-      console.log(this.getTime)
-      console.log(this.getTeacher)
+      // console.log(this.getTime)
+      // console.log(this.getTeacher)
 
     }
   }

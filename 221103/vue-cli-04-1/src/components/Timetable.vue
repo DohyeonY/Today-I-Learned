@@ -85,9 +85,11 @@ export default {
         this.choiceTime.push(this.selected)
         this.choiceTeacher.push(this.selectedTeacher)
         const btnTag = document.querySelectorAll('button')
+
         btnTag.forEach((el) => {
             el.style.textDecoration = ''
         })
+        
         const objectData = { 'time' : this.choiceTime, 'teacher' : this.choiceTeacher }
         this.$emit('click-submit', objectData)
         // this.$emit('click-submit', this.choiceTime)

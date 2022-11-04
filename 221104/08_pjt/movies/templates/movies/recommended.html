@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+  <h1 class="text-center">Recommended</h1>
+  <hr>
+  <div class="container d-flex flex-row">
+    {% for movie in movies %}
+      <div class="card col-4">
+        <img src="{{ movie.poster_path }}" class="card-img-top" style="height: 350px;" alt="poster_path">
+        <div class="card-body">
+          <h5 class="card-title">{{ movie.title }}</h5>
+          <p class="card-text">{{ movie.overview }}</p>
+          <a href="{% url 'movies:detail' movie.pk %}" class="btn btn-primary">DETAIL</a>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+  <hr>
+
+
+{% endblock content %}
+

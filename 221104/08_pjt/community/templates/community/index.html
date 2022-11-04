@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="text-center">Community</h1>
+  <hr>
+  {% for review in reviews %}
+    <p>작성자 : <a href="{% url 'accounts:profile' review.user.username %}">{{ review.user }}</a></p>
+    <p>글 번호: {{ review.pk }}</p>
+    <p>글 제목: {{ review.title }}</p>
+    <p>글 내용: {{ review.content }}</p>
+
+    <form class='like-forms' data-review-id="{{ review.pk }}" action="{% url 'community:like' review.pk %}" method="POST">
+      {% csrf_token %}
+      {% if user in review.like_users.all %}
+        <input type="submit" value="좋아요 취소" id="like-{{ review.pk }}">
+        
+      {% else %}
+        <input type="submit" value="좋아요" id="like-{{ review.pk }}">
+      {% endif %}
+    </form>
+    <p>
+      <span id='like-user-count'>{{ review.like_users.all|length }}</span> 명이 이 글을 좋아합니다.
+    </p>
+    <a href="{% url 'community:detail' review.pk %}">[detail]</a>
+    <hr>
+  {% endfor %}
+{% endblock %}
+
+{% block script %}
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const forms =document.querySelector('.like-forms')
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value
+    
+    {% comment %} forms.forEach((form)=>{ {% endcomment %}
+      forms.addEventListener('submit',function(event) {
+        event.preventDefault()
+        const reviewId=event.target.dataset.reviewId
+
+        axios({
+          method : 'post',
+          headers: {'X-CSRFToken' : csrftoken},
+          url: `/community/${reviewId}/like/`,
+        })
+        .then((response) => {
+        const isLiked = response.data.is_liked
+  
+          const likeBtn = document.querySelector(`#like-${reviewId}`)
+  
+          if (isLiked === true) {
+            likeBtn.value = '좋아요 취소'
+          } else {
+            likeBtn.value = '좋아요'
+          }
+          const likeUserCountTag = document.querySelector('#like-user-count')
+          const likeCount = response.data.like_user
+          likeUserCountTag.innerText = likeCount
+        })
+  
+        .catch (function (error) {
+          console.log(error.response)
+        })
+      })
+
+
+      
+    {% comment %} }) {% endcomment %}
+  </script>
+
+
+{% endblock script %}
