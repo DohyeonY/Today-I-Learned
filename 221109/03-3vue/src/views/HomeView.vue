@@ -1,7 +1,9 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+      <h1>Start 버튼으로 시작해 보세요!</h1>
+    <img alt="Vue logo" src="../assets/ssafy-banner.png">
+  </div>
   </div>
 </template>
 

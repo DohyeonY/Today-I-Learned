@@ -15,7 +15,7 @@ export default {
     name:'Seafling',
     methods: {
       leftClick() {
-        this.$router.push({name: 'Nocolor'})
+        window.alert('이전 단계로 돌아갈 수 없습니다')
       },
       rightClick() {
         this.$router.push({name: 'Ssafleaf'})

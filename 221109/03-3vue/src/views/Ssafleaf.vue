@@ -17,7 +17,7 @@ export default {
     name:'Seafleaf',
     methods: {
       leftClick() {
-        this.$router.push({name: 'Ssafling'})
+        window.alert('이전 단계로 돌아갈 수 없습니다')
       },
       rightClick() {
         this.$router.push({name: 'Ssaflower'})
