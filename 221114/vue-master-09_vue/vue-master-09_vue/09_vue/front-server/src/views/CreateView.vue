@@ -3,7 +3,7 @@
 <template>
   <div>
     <h1>게시글 작성</h1>
-    <form @submit.prevent="createArticle">
+    <form @submit.prevent="createArtcicle">
       <label for="title">제목 : </label>
       <input type="text" id="title" v-model.trim="title"><br>
       <label for="content">내용 : </label>
@@ -14,7 +14,9 @@
 </template>
 
 <script>
-import { constants } from 'buffer';
+import axios from 'axios'
+// import { constants } from 'buffer';
+const API_URL = 'http://127.0.0.1:8000'
 
 export default {
   name: 'CreateView',
@@ -28,13 +30,34 @@ export default {
     createArtcicle() {
       const title = this.title
       const content = this.content
-      if(!title) [{
+      if(!title) {
         alert('제목을 입력하세요')
-      }]
-      else if (!comment) {
-        
+        return
       }
-    }
+      else if (!content) {
+        alert('내용을 입력해주세요')
+        return
+      }
+      axios({
+        method : 'post',
+        url: `${API_URL}/api/v1/articles/`,
+        data: {
+          title: title,
+          content: content,
+        },
+        headers : {
+          Authorization: `Token ${this.$store.state.token}`
+        }
+      })
+      .then(response => {
+        console.log(response)
+        this.$router.push({ name: 'ArticleView'})
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    },
+
   }
 }
 </script>

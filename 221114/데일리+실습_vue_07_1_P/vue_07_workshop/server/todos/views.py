@@ -3,12 +3,15 @@ from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import IsAuthenticated
 
 from .serializers import TodoSerializer
 from .models import Todo
 
 
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def todo_list_create(request):
     if request.method == 'GET':
         todos = Todo.objects.all()
@@ -17,7 +20,8 @@ def todo_list_create(request):
     else:
         serializer = TodoSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            # serializer.save()
+            serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 

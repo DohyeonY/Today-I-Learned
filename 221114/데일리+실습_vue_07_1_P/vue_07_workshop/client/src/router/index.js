@@ -4,6 +4,7 @@ import TodoList from '@/views/todos/TodoList'
 import CreateTodo from '@/views/todos/CreateTodo'
 import Signup from '@/views/accounts/Signup'
 import Login from '@/views/accounts/Login'
+import Logout from '@/views/accounts/Logout'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/accounts/login',
     name: 'Login',
     component: Login,
+  },
+  {
+    path: '/accounts/logout',
+    name: 'Logout',
+    component: Logout,
   },
 ]
 

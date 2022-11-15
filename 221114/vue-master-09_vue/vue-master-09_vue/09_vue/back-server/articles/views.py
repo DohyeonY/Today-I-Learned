@@ -5,8 +5,8 @@ from rest_framework.decorators import api_view
 # from rest_framework.decorators import authentication_classes
 
 # permission Decorators
-# from rest_framework.decorators import permission_classes
-# from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import IsAuthenticated
 
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
@@ -16,7 +16,7 @@ from .models import Article, Comment
 
 
 @api_view(['GET', 'POST'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def article_list(request):
     if request.method == 'GET':
         # articles = Article.objects.all()
@@ -27,8 +27,8 @@ def article_list(request):
     elif request.method == 'POST':
         serializer = ArticleSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            # serializer.save(user=request.user)
+            # serializer.save()
+            serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 

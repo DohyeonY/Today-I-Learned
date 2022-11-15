@@ -7,9 +7,11 @@
       </span>
       <span>
         <router-link :to="{ name: 'Signup' }">Signup</router-link> |
-        <router-link :to="{ name: 'Login' }">Login</router-link> 
+        <router-link :to="{ name: 'Login' }">Login</router-link> |
+        <router-link :to="{ name: 'Logout' }">logout</router-link> 
       </span>
     </div>
+    <p></p>
     <router-view/>
   </div>
 </template>
@@ -19,8 +21,13 @@ export default {
   name: 'App',
   data: function () {
     return {
-
+      userName: null,
     }
+  },
+  computed : {
+    // getUserName() {
+    //   // this.userName = this.$store.s
+    // }
   },
   methods: {
 

@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>Article Page</h1>
+    <router-link :to="{ name: 'CreateView'}">Create</router-link>
     <hr>
+
     <ArticleList/>
   </div>
 </template>
@@ -14,13 +16,23 @@ export default {
     ArticleList,
   },
   computed:{
-  },
+    isLogin() {
+      return this.$store.getters.isLogin
+    }
+  }, 
   created() {
     this.getArticles()
   },
   methods: {
     getArticles() {
-      this.$store.dispatch('getArticles')
+      if (this.isLogin === true) {
+        console.log(124142)
+        this.$store.dispatch('getArticles')
+      } else {
+        alert('로그인이 필요한 서비스 입니다.')
+        this.$router.push({ name: 'LogInView'})
+      }
+      
     }
   }
 }
