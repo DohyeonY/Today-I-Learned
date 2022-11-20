@@ -24,7 +24,8 @@ class ActorSerializer(serializers.ModelSerializer):
 class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = ('id', 'title', 'title_en', 'rate', 'img_url', 'description', 'directors', 'actors', 'genres', 'open_date')
+        fields = '__all__'
+        # ('id', 'title', 'title_en', 'rate', 'img_url', 'description', 'directors', 'actors', 'genres', 'users', 'open_date')
 
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
@@ -37,10 +38,9 @@ class WorldcupSerializer(serializers.ModelSerializer):
         fields = ('id', 'movies')
 
 class UserCreationSerializer(serializers.ModelSerializer):
-    # pass
     class Meta:
         model = User
-        fields = ('id', 'username', 'nickname', 'password',)
+        fields = ('id', 'username', 'password',)
 
 class UserSerializer(serializers.ModelSerializer):
     review_set = ReviewSerializer(many=True)

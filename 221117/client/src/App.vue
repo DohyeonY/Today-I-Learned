@@ -6,7 +6,7 @@
       clipped
     >
       <v-list dense v-if="isLoggedIn">
-        <v-list-item link to="/">
+        <v-list-item link to="/home">
           <v-list-item-action>
             <v-icon>mdi-view-dashboard</v-icon>
           </v-list-item-action>
@@ -42,7 +42,7 @@
       </v-list>
 
       <v-list dense v-else>
-        <v-list-item link to="login">
+        <v-list-item link to="/">
           <v-list-item-action>
             <v-icon>mdi-account-check</v-icon>
           </v-list-item-action>
@@ -70,7 +70,7 @@
     </v-app-bar>
 
     <v-main class="row">
-      <v-container
+      <v-main
         class="fill-height"
         fluid
       >
@@ -82,7 +82,7 @@
             <router-view></router-view>
           </v-col>
         </v-row>
-      </v-container>
+      </v-main>
     </v-main>
 
     <v-footer app>

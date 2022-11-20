@@ -11,17 +11,17 @@
       </div>
       <br>
       <div class="form-group">
-        <v-text-field v-model="userInput.username" label="username" name="username"></v-text-field>
+        <v-text-field v-model="userInput.username" label="아이디" name="Username"></v-text-field>
       </div>
 
       <div class="form-group">
-        <v-text-field v-model="userInput.nickname" label="Nickname" name="nickname"></v-text-field>
+        <v-text-field v-model="userInput.email" label="닉네임" name="Email"></v-text-field>
       </div>
 
       <div class="form-group">
         <v-text-field
           v-model="userInput.password"
-          label="Password"
+          label="비밀번호"
           name="Password"
           type="password"
         ></v-text-field>
@@ -30,13 +30,13 @@
       <div class="form-group">
         <v-text-field
           v-model="userInput.passwordConfirmation"
-          label="Password Confirmation"
+          label="비밀번호 확인"
           name="passwordConfirmation"
           type="password"
         ></v-text-field>
       </div>
 
-      <button>Register</button>
+      <button>회원가입</button>
     </form>
   </div>
 </template>
@@ -50,7 +50,7 @@ export default {
     return {
       userInput: {
         username: "",
-        nickname:"",
+        email:"",
         password: "",
         passwordConfirmation: ""
       }

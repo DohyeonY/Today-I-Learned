@@ -14,8 +14,8 @@
         @click="select"
         :src="movie.img_url"
         alt=""
-        width="400px"
-        height="600px"
+        width="100%"
+        height="100%"
         :elevation="hover ? 12 : 2"
       ></v-img>
     </v-hover>

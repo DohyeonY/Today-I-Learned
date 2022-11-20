@@ -1,154 +1,167 @@
 <template>
 
-  <v-hover v-slot:default="{ hover }">
-    <v-card class="movie-card">
+  <v-card class="movie-detail-modal" tile>
+    <v-card-title>
+      <span class="headline">{{ movie.title }}</span><br>
+      <span v-if="movie.title_en">({{ movie.title_en }})</span>
+    </v-card-title>
 
-      <v-img
-        :src="movie.img_url"
-        gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-        height="200px"
-      >
-      </v-img>
+    
+    <v-container fluid>
 
+      <v-divider></v-divider>
+      <v-row justify="space-around">
+        <v-col cols="3">
+          <v-img
+            :src="movie.img_url"
+            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+          >
+          </v-img>
+        </v-col>
+      </v-row>
 
-      <v-expand-transition>
-        <div 
-          v-if="hover || rating !== 0"
-          class="d-flex transition-fast-in-fast-out black darken-2 text-center display-1 v-card--reveal"
-          @click.stop="review_dialog_show=true"
-        >
-          <v-rating
-            v-model="rating"
-            color="orange"
-            background-color="orange lighten-3"
-            size="21.6"
-          ></v-rating>
-        </div>
-      </v-expand-transition>
+      <v-divider></v-divider>
 
-      <v-dialog
-        v-model="review_dialog_show"
-        max-width="500"
-      >
-        <MovieReviewModal :rating="rating" :movie="movie" @reviewUpdateEvent="ratingCheck" @closeDialogEvent="closeReviewDialog"/>
-      </v-dialog>
+      <v-card-text>
+        <div><b>감독</b> | <span v-for="name in directors" :key=name>{{ name }}, </span></div>
+        <div><b>배우</b> | <span v-for="name in actors" :key=name>{{ name }}, </span></div>
+        <div><b>평점</b> | <span>{{ movie.rate }}</span></div>
+      </v-card-text>
 
+      <v-divider></v-divider>
 
-      <v-card-actions>
+      <v-expansion-panels accordion>
+        <v-expansion-panel accordion>
+          <v-expansion-panel-header>줄거리</v-expansion-panel-header>
+          <v-expansion-panel-content>
+            {{ movie.description }}
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+      
+      <v-card-text>
+        <div><b>평가</b></div>
+        <ul style="list-style: none;">
+          <li v-for="review in reviews" :key=review.id>
+            <v-row>
+              <v-rating
+                :value="review.score"
+                background-color="white"
+                color="yellow accent-4"
+                dense
+                size="8"
+                readonly
+              ></v-rating>
+              <div>
+                | {{ review.content }}
+                <i style="font-size:12px;"> by {{ review.username }}</i>
+              </div>
+              <div v-if="user_pk==review.user" >
+                <v-btn small v-on:click="reviewDelete($event, review)">
+                  삭제
+                </v-btn>
+              </div>
 
-        <v-spacer></v-spacer>
+             </v-row>
+          </li>
+        </ul>
 
-        <!-- <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>
+      </v-card-text>
 
-        <v-btn icon>
-          <v-icon>mdi-bookmark</v-icon>
-        </v-btn>
+    </v-container>
 
-        <v-btn icon>
-          <v-icon>mdi-share-variant</v-icon>
-        </v-btn> -->
-
-        <!-- detail modal -->
-        <v-dialog v-model=detail_dialog_show width="600px">
-          <template v-slot:activator="{ on }">
-            <v-btn small v-on="on">
-              <v-icon>mdi-file-document-box-search-outline</v-icon>Detail
-            </v-btn>
-          </template>
-          <MovieDetailModal :movie="movie" :reviews="reviews" @reviewUpdateEvent="ratingCheck" @closeDialogEvent="closeDetailDialog"/>
-        </v-dialog>
-
-
-      </v-card-actions>
-    </v-card>
-  </v-hover>
-
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <v-btn color="white darken-1" text @click.prevent="closeDialog">닫기</v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
-  import axios from 'axios'
-  import jwtDecode from 'jwt-decode'
-  import MovieDetailModal from '@/components/MovieDetailModal.vue'
-  import MovieReviewModal from '@/components/MovieReviewModal.vue'
-
-  export default {
-    data: () => ({
-      reviews: [],
-      rating: 0,
-      detail_dialog_show: false,
-      review_dialog_show: false,
-    }),
-
-    components: {
-      MovieDetailModal,
-      MovieReviewModal,
-    },
-
-    props: {
-      movie: {
-        type: Object,
-        required: false,
-      }
-    },
-
-    methods: {
-
-      closeDetailDialog() {
-        this.detail_dialog_show = false
-      },
-
-      closeReviewDialog() {
-        this.review_dialog_show = false
-      },
-      
-      // rating한 적이 있는 영화는 별점 표시 (mount되는 시점에서 실행되는 함수)
-      ratingCheck() {
-        // 현재 영화의 리뷰 목록에서 현재 로그인한 사람의 id를 찾아본다.
-        const token = sessionStorage.getItem('jwt')
-        const user_id = jwtDecode(token).user_id
-        const options = {
-          headers: {
-            Authorization: 'JWT ' + token
-          }
-        }
-
-        axios.get(`http://localhost:8000/api/v1/review/movie/${this.movie.id}/`, options)
-        .then(res => {
-          this.reviews = res.data
-          this.reviews.forEach(review => {
-            if (review.user === user_id) {
-              this.rating = review.score
-            }
-            axios.get(`http://localhost:8000/api/v1/user/${review.user}/`, options)
-            .then(res => {
-              review.username = res.data.username
-            })
-          })
-        })
-      } // end of ratingCheck()
-
-    },
-
-    watch: {
-
-    }, // watch end
-    
-    mounted() {
-      this.ratingCheck()
+import axios from 'axios'
+import jwtDecode from 'jwt-decode'
+export default {
+  data () {
+    return {
+      directors: [],
+      actors: [],
+      target_review: null,
+      user_pk: ''
     }
-
-  }
+  },
+  props: {
+    movie: {
+      type: Object,
+      required: false,
+    },
+    reviews: {
+      type: Array,
+      required: false,
+    }
+  },
+  methods: {
+    closeDialog() {
+      this.$emit('closeDialogEvent', true)
+    },
+    getUserPk(){
+      const token = sessionStorage.getItem('jwt')
+      this.user_pk = jwtDecode(token).user_id
+    },
+    directorsNameCall() {
+      const token = sessionStorage.getItem('jwt')
+      const options = {
+        headers: {
+          Authorization: 'JWT ' + token
+        }
+      }
+      this.movie.directors.forEach(code => {
+        axios.get(`http://localhost:8000/api/v1/director/${code}/`, options)
+        .then(res => {
+          this.directors.push(res.data.name)
+        })
+        .catch(error => {
+          console.log(error.response)
+        })
+      })
+    },
+    actorsNameCall() {
+      const token = sessionStorage.getItem('jwt')
+      const options = {
+        headers: {
+          Authorization: 'JWT ' + token
+        }
+      }
+      this.movie.actors.forEach(code => {
+        axios.get(`http://localhost:8000/api/v1/actor/${code}/`, options)
+        .then(res => {
+          this.actors.push(res.data.name)
+        })
+        .catch(error => {
+          console.log(error.response)
+        })
+      })
+    },
+    reviewDelete(event, review) {
+      const token = sessionStorage.getItem('jwt')
+      const options = {
+        headers: {
+          Authorization: 'JWT ' + token
+        }
+      }
+      axios.get(`http://localhost:8000/api/v1/review/delete/${review.id}/`, options)
+      .then(() => {
+        this.$emit('reviewUpdateEvent', true)
+      })
+    },
+  }, //end of methods
+  mounted() {
+    this.directorsNameCall()
+    this.actorsNameCall()
+    this.getUserPk()
+    // this.reviewsCall()
+  },
+}
 </script>
 
 <style>
-.v-card--reveal {
-  align-items: center;
-  bottom: 18%;
-  justify-content: center;
-  opacity: 0.8;
-  position: absolute;
-}
-
 </style>

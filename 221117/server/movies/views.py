@@ -15,7 +15,7 @@ import random
 
 # .../user/
 @api_view(['POST'])
-# @permission_classes([AllowAny])
+@permission_classes([AllowAny])
 def signup(request):
     serializer = UserCreationSerializer(data=request.data)
     if serializer.is_valid():
@@ -105,8 +105,15 @@ def genre_detail(request, genre_pk):
 @api_view(['GET'])
 def random_worldcup(request):
     # random & filterting 자료 https://stackoverflow.com/questions/32389519/django-get-10-random-instances-from-a-queryset-and-order-them-into-a-new-querys
-    random_movies = random.sample(list(Movie.objects.all()), 16)
-    # random_movies = Movie.objects.all().order_by('?')[:32]
+    # random_movies = list(WorldcupMovies.objects.all())
+    # random.shuffle(random_movies)
+    # random.sample(list(WorldcupMovies.objects.all()), 16)
+    # items = list(WorldcupMovies.objects.all())
+    # for i in range(20) :
+    #     random_movies.append(random.choice(items))
+
+    
+    random_movies = WorldcupMovies.objects.all().order_by('?')[:16]
 
     worldcup = Worldcup()
     worldcup.save()
@@ -114,6 +121,7 @@ def random_worldcup(request):
 
     # worldcup = Worldcup.create(random_movies)
     worldcup_serializer = WorldcupSerializer(worldcup)
+    print(worldcup_serializer.data)
     return Response(worldcup_serializer.data)
 
 # .../worldcup/pk/
@@ -143,6 +151,7 @@ def score_update(request):
     }   
     '''
     data = request.POST
+    print('스코어업데이트의 데이터f{data}')
     movie_pk = int(data.get('movie_pk'))
     worldcup_pk = int(data.get('worldcup_pk'))
     movie = get_object_or_404(Movie, pk=movie_pk)
@@ -150,7 +159,7 @@ def score_update(request):
 
 
     target_record = Ranking.objects.get(movie=movie, worldcup=worldcup)
-
+    print('스코어업데이트의 데이터f{target_record}}')
     target_record.score += 1
     target_record.save()
 
