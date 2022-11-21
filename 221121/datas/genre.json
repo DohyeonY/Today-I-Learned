@@ -1,0 +1,212 @@
+[
+    {
+        "pk": 0,
+        "model": "movies.genre",
+        "fields": {
+            "name": "전체"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "movies.genre",
+        "fields": {
+            "name": "드라마"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "movies.genre",
+        "fields": {
+            "name": "판타지"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "movies.genre",
+        "fields": {
+            "name": "서부"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "movies.genre",
+        "fields": {
+            "name": "공포"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "movies.genre",
+        "fields": {
+            "name": "로맨스"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "movies.genre",
+        "fields": {
+            "name": "모험"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "movies.genre",
+        "fields": {
+            "name": "스릴러"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "movies.genre",
+        "fields": {
+            "name": "느와르"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "movies.genre",
+        "fields": {
+            "name": "컬트"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "movies.genre",
+        "fields": {
+            "name": "다큐멘터리"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "movies.genre",
+        "fields": {
+            "name": "코미디"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "movies.genre",
+        "fields": {
+            "name": "가족"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "movies.genre",
+        "fields": {
+            "name": "미스터리"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "movies.genre",
+        "fields": {
+            "name": "전쟁"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "movies.genre",
+        "fields": {
+            "name": "애니메이션"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "movies.genre",
+        "fields": {
+            "name": "범죄"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "movies.genre",
+        "fields": {
+            "name": "뮤지컬"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "movies.genre",
+        "fields": {
+            "name": "SF"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "movies.genre",
+        "fields": {
+            "name": "액션"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "movies.genre",
+        "fields": {
+            "name": "무협"
+        }
+    },
+    {
+        "pk": 21,
+        "model": "movies.genre",
+        "fields": {
+            "name": "에로"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "movies.genre",
+        "fields": {
+            "name": "서스펜스"
+        }
+    },
+    {
+        "pk": 23,
+        "model": "movies.genre",
+        "fields": {
+            "name": "서사"
+        }
+    },
+    {
+        "pk": 24,
+        "model": "movies.genre",
+        "fields": {
+            "name": "블랙코미디"
+        }
+    },
+    {
+        "pk": 25,
+        "model": "movies.genre",
+        "fields": {
+            "name": "실험"
+        }
+    },
+    {
+        "pk": 26,
+        "model": "movies.genre",
+        "fields": {
+            "name": "영화카툰"
+        }
+    },
+    {
+        "pk": 27,
+        "model": "movies.genre",
+        "fields": {
+            "name": "영화음악"
+        }
+    },
+    {
+        "pk": 28,
+        "model": "movies.genre",
+        "fields": {
+            "name": "영화패러디포스터"
+        }
+    },
+    {
+        "pk": 29,
+        "model": "movies.genre",
+        "fields": {
+            "name": "공연실황"
+        }
+    }
+]
