@@ -15,7 +15,7 @@
       </div>
 
       <div class="form-group">
-        <v-text-field v-model="userInput.email" label="닉네임" name="Email"></v-text-field>
+        <v-text-field v-model="userInput.nickname" label="닉네임" name="Nickname"></v-text-field>
       </div>
 
       <div class="form-group">
@@ -50,7 +50,7 @@ export default {
     return {
       userInput: {
         username: "",
-        email:"",
+        nickname:"",
         password: "",
         passwordConfirmation: ""
       }

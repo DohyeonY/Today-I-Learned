@@ -79,11 +79,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:8080',
-#     'http://192.168.24.32:8080',
-# #     # vue 
-# ]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8080',
+    'http://192.168.24.32:8080',
+#     # vue 
+]
 CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ALLOWED_ALL_ORIGINS = True
 

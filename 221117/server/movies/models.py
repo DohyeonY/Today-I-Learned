@@ -4,7 +4,7 @@ from django.conf import settings
 
 # Create your models here.
 class User(AbstractUser):
-    pass
+    nickname = models.CharField(max_length=10)
 
 class Genre(models.Model):
     name = models.CharField(max_length=20)
