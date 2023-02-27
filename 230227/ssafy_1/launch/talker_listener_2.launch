@@ -1,0 +1,6 @@
+<launch>
+    <!-- Talker Topic Publisher -->
+    <node pkg="ssafy_1" type="Talker 노드 파일 명 입력" name="talker" />
+    <!-- Listener Topic Subscriber -->
+    <node pkg="ssafy_1" type="Listener 노드 파일 명 입력" name="listener" output="screen" />
+</launch>
