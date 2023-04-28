@@ -181,5 +181,97 @@
     ```
     - typedef
     ```
-    
+    typedef ListOfInts = List<int>;
+
+    ListOfInts reverseListOfNumbers(ListOfInts list) {
+        var reversed = list.reversed;
+        return reversed.toList();
+    }
+
+    void main() {
+        print(reverseListOfNumbers([1,2,3,])); // [3,2,1]
+    }
     ```
+
+    - class
+    ```
+    class Player {
+        final String name = "dohyeon";
+        int xp = 1500;
+
+        void sayHello() {
+            print("Hi my name is $name");
+        }
+    }
+    void main() {
+        var player = Player();
+        player.sayHello();
+    }
+    ```
+    - constructors
+    ```
+    class Player {
+        final String name;
+        int xp;
+
+        Player(this.name, this.xp);
+
+        void sayHello() {
+            print("Hi my name is $name");
+        }
+    }
+    void main() {
+        var player = Player("dohyeon", 2000);
+        player.sayHello();
+        var player2 = Player("ddd", 100);
+        Player.sayHello();
+    }
+    ```
+
+    - named constructors parameters
+    ```
+    class Player {
+        final String name;
+        int xp, age;
+        String team;
+        
+        Player({
+            required this.name, 
+            required this.xp, 
+            required this.team,
+             required this.age
+             });
+        Player.createBluePlayer({
+            required String name,
+            required int age,
+        }) : this.age = age,
+            this.name = name,
+            this.team = 'blue',
+            this.xp = 0;
+
+        Player.createRedPlayer(String name, int age) :
+            this.age = age,
+            this.name = name,
+            this.team = "red",
+            this.age = 0;
+
+        void sayHello() {
+            print("Hi my name is $name");
+        }
+    }
+
+    void main() {
+        var player = Player.createBluePlayer(
+            name : "dohyeon",
+            xp : 2000,
+            );
+        player.sayHello();
+        var player2 = Player.createRedPlayer(
+            "ddd",
+            100,
+            );
+        Player.sayHello();
+    }
+    ```
+
+
