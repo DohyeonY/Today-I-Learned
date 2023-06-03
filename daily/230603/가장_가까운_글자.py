@@ -5,7 +5,7 @@ def solution(s):
     for i in s :
         wordLen = len(word)
         # print(wordLen)
-        if word in i :
+        if i in word :
             targetIdx = 0
             for j in range(wordLen) :
                 if word[j] == i :
@@ -15,5 +15,5 @@ def solution(s):
             answer.append(-1)
         word.append(i)
         
-    print(word)
-    # return answer
+    # print(answer)
+    return answer
