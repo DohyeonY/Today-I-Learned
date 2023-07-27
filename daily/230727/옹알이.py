@@ -5,11 +5,11 @@ def solution(babbling) :
     for i in babbling : 
         while i :
             if i[:2] in bebe and i[:4] not in not_bebe :
-                i = i[:2]
+                i = i[2:]
             elif i[:3] in bebe and i[:6] not in not_bebe :
                 i = i[3:]
             else :
                 break
-        if not b :
+        if not i :
             answer += 1
     return answer
