@@ -4,7 +4,7 @@ def solution(N, stages) :
     
     for i in range(1, N + 1) :
         c = 0
-        for j in range(k) :
+        for j in range(len(stages)) :
             if stages[j] == i :
                 c += 1
         if c == 0 :
@@ -16,7 +16,7 @@ def solution(N, stages) :
     a = sorted(s, reverse=True)
     answer = []
     
-    for i in rage(len(a)) :
+    for i in range(len(a)) :
         answer.append(s.index(a[i]) + 1)
         s[s.index(a[i])] = 2
         
